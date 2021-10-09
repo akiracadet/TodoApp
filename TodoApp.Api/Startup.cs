@@ -11,6 +11,26 @@ namespace TodoApp.Api
         public void ConfigureServices(IServiceCollection services)
         {
         }
+
+        public void ConfigureLocalServices(IServiceCollection services)
+        {
+            this.ConfigureServices(services);
+        }
+
+        public void ConfigureDevelopmentServices(IServiceCollection services)
+        {
+            this.ConfigureServices(services);
+        }
+
+        public void ConfigureStagingServices(IServiceCollection services)
+        {
+            this.ConfigureServices(services);
+        }
+
+        public void ConfigureProductionServices(IServiceCollection services)
+        {
+            this.ConfigureServices(services);
+        }
         #endregion
 
         #region Configure

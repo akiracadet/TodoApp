@@ -15,7 +15,7 @@
 
         internal static void SpecificationExperiment()
         {
-            var todo = new TodoModel { Id = 0 };
+            var todo = new TodoModel { Id = 1 };
             //var spec = new Specification<TodoModel>(todo, "I have an error", (todo) => todo.Id == 0);
             var spec = new Specification<TodoModel>(todo, "I have an error")
                 .SetCondition((todo) =>

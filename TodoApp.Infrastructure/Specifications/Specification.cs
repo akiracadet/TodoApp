@@ -7,11 +7,22 @@
     {
         private T Entity { get; set; }
 
-        private Func<bool> Condition { get; set; }
+        private Func<T, bool> Condition { get; set; }
 
         public string Error { get; }
 
-        public Specification(T entity, string error, Func<bool> condition)
+        public Specification(T entity, string error)
+        {
+            this.Entity = entity;
+            this.Error = error;
+
+            this.Condition = (entity) =>
+            {
+                throw new NotImplementedException("No Condition Set");
+            };
+        }
+
+        public Specification(T entity, string error, Func<T, bool> condition)
         {
             this.Entity = entity;
             this.Error = error;
@@ -20,7 +31,13 @@
 
         public bool IsSatisfied()
         {
-            return this.Condition();
+            return this.Condition(this.Entity);
+        }
+
+        public ISpecification<T> SetCondition(Func<T, bool> condition)
+        {
+            this.Condition = condition;
+            return this;
         }
     }
 }
